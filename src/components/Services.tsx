@@ -42,9 +42,16 @@ export const Services = () => {
           {displayedServices.map((service, index) => (
             <div
               key={service.titleKey}
-              className="flex flex-col"
+              className="flex flex-col cursor-pointer"
               onMouseEnter={() => setHoveredCard(index)}
               onMouseLeave={() => setHoveredCard(null)}
+              onClick={() => {
+                const packagesEl = document.getElementById("packages");
+                if (packagesEl) {
+                  packagesEl.scrollIntoView({ behavior: "smooth" });
+                  window.dispatchEvent(new CustomEvent("select-package-tab", { detail: service.packageKey }));
+                }
+              }}
             >
               {/* Modern Glass Card */}
               <div

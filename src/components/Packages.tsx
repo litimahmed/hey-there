@@ -1,7 +1,7 @@
 import { Check } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useTranslation } from "react-i18next";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const serviceKeys = ["webDev", "mobileDev", "desktopDev", "automation", "uiuxDesign"] as const;
 
@@ -169,6 +169,17 @@ export const Packages = () => {
   const { ref, isVisible } = useScrollAnimation();
   const { t } = useTranslation();
   const [activeService, setActiveService] = useState<ServiceKey>("webDev");
+
+  useEffect(() => {
+    const handler = (e: Event) => {
+      const key = (e as CustomEvent).detail as ServiceKey;
+      if (serviceKeys.includes(key)) {
+        setActiveService(key);
+      }
+    };
+    window.addEventListener("select-package-tab", handler);
+    return () => window.removeEventListener("select-package-tab", handler);
+  }, []);
 
   const tabLabels: Record<ServiceKey, string> = {
     webDev: t("packages.tabs.webDev"),

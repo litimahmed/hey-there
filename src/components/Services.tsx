@@ -10,31 +10,11 @@ export const Services = () => {
   const [showAll, setShowAll] = useState(false);
 
   const services = [
-    {
-      titleKey: "services.items.webDev.title",
-      descKey: "services.items.webDev.description",
-      icon: Globe,
-    },
-    {
-      titleKey: "services.items.mobileDev.title",
-      descKey: "services.items.mobileDev.description",
-      icon: Smartphone,
-    },
-    {
-      titleKey: "services.items.desktopDev.title",
-      descKey: "services.items.desktopDev.description",
-      icon: Monitor,
-    },
-    {
-      titleKey: "services.items.automation.title",
-      descKey: "services.items.automation.description",
-      icon: Bot,
-    },
-    {
-      titleKey: "services.items.uiuxDesign.title",
-      descKey: "services.items.uiuxDesign.description",
-      icon: Figma,
-    },
+    { titleKey: "services.items.webDev.title", descKey: "services.items.webDev.description", icon: Globe, packageKey: "webDev" },
+    { titleKey: "services.items.mobileDev.title", descKey: "services.items.mobileDev.description", icon: Smartphone, packageKey: "mobileDev" },
+    { titleKey: "services.items.desktopDev.title", descKey: "services.items.desktopDev.description", icon: Monitor, packageKey: "desktopDev" },
+    { titleKey: "services.items.automation.title", descKey: "services.items.automation.description", icon: Bot, packageKey: "automation" },
+    { titleKey: "services.items.uiuxDesign.title", descKey: "services.items.uiuxDesign.description", icon: Figma, packageKey: "uiuxDesign" },
   ];
 
   const displayedServices = showAll ? services : services.slice(0, 3);
@@ -62,9 +42,16 @@ export const Services = () => {
           {displayedServices.map((service, index) => (
             <div
               key={service.titleKey}
-              className="flex flex-col"
+              className="flex flex-col cursor-pointer"
               onMouseEnter={() => setHoveredCard(index)}
               onMouseLeave={() => setHoveredCard(null)}
+              onClick={() => {
+                const packagesEl = document.getElementById("packages");
+                if (packagesEl) {
+                  packagesEl.scrollIntoView({ behavior: "smooth" });
+                  window.dispatchEvent(new CustomEvent("select-package-tab", { detail: service.packageKey }));
+                }
+              }}
             >
               {/* Modern Glass Card */}
               <div

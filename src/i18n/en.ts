@@ -56,16 +56,14 @@ export const en = {
     subtitle: "OUR WORK",
     title: "SELECTED PROJECTS",
     categories: {
-      design: "Brand Design",
-      creative: "Creative Direction",
       development: "Web Development",
-      marketing: "Digital Campaign",
     },
     items: {
-      branding: "LUXE COSMETICS REBRAND",
-      creative: "NOVA TECH IDENTITY",
-      web: "ARTISAN MARKETPLACE",
-      digital: "METRO FASHION CAMPAIGN",
+      elearning: "E-LEARNING PLATFORM",
+      dental: "DENTAL CLINIC",
+      restaurant: "RESTAURANT",
+      storybook: "STORYBOOK WEBSITE",
+      admin: "ADMIN DASHBOARD",
     },
   },
   faq: {

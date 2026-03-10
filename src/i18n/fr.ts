@@ -56,16 +56,14 @@ export const fr = {
     subtitle: "NOS RÉALISATIONS",
     title: "PROJETS SÉLECTIONNÉS",
     categories: {
-      design: "Design de Marque",
-      creative: "Direction Créative",
       development: "Développement Web",
-      marketing: "Campagne Digitale",
     },
     items: {
-      branding: "REBRANDING LUXE COSMÉTIQUES",
-      creative: "IDENTITÉ NOVA TECH",
-      web: "MARKETPLACE ARTISAN",
-      digital: "CAMPAGNE METRO FASHION",
+      elearning: "PLATEFORME E-LEARNING",
+      dental: "CLINIQUE DENTAIRE",
+      restaurant: "RESTAURANT",
+      storybook: "SITE STORYBOOK",
+      admin: "TABLEAU DE BORD ADMIN",
     },
   },
   faq: {

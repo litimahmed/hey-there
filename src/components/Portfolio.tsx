@@ -3,12 +3,11 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-// Import images
-import mockup1 from "@/images/mockup1.png";
-import mockup8 from "@/images/mockup8.png";
-import mockup4 from "@/images/mockup4.png";
-import mockup5 from "@/images/mockup5.jpeg";
-import mockup6 from "@/images/mockup6.jpeg";
+import projectElearning from "@/images/project-elearning.jpg";
+import projectDental from "@/images/project-dental.jpg";
+import projectRestaurant from "@/images/project-restaurant.jpg";
+import projectStorybook from "@/images/project-storybook.jpg";
+import projectAdmin from "@/images/project-admin.jpg";
 
 export const Portfolio = () => {
   const { ref, isVisible } = useScrollAnimation();
@@ -19,35 +18,39 @@ export const Portfolio = () => {
   const portfolioItems = [
     {
       id: 1,
-        titleKey: "portfolio.items.web",
-        categoryKey: "portfolio.categories.development",
-      image: mockup1,
+      titleKey: "portfolio.items.elearning",
+      categoryKey: "portfolio.categories.development",
+      image: projectElearning,
+      link: "https://formacad.ahmedlitim.com",
     },
-
+    {
+      id: 2,
+      titleKey: "portfolio.items.dental",
+      categoryKey: "portfolio.categories.development",
+      image: projectDental,
+      link: "https://dental.ahmedlitim.com",
+    },
     {
       id: 3,
-      titleKey: "portfolio.items.web",
+      titleKey: "portfolio.items.restaurant",
       categoryKey: "portfolio.categories.development",
-      image: mockup8,
+      image: projectRestaurant,
+      link: "https://sept.ahmedlitim.com",
     },
     {
       id: 4,
-        titleKey: "portfolio.items.web",
-        categoryKey: "portfolio.categories.development",
-      image: mockup4,
+      titleKey: "portfolio.items.storybook",
+      categoryKey: "portfolio.categories.development",
+      image: projectStorybook,
+      link: "https://verdant.ahmedlitim.com",
     },
-      {
-          id: 5,
-          titleKey: "portfolio.items.web",
-          categoryKey: "portfolio.categories.development",
-          image: mockup5,
-      },
-      {
-          id: 6,
-          titleKey: "portfolio.items.web",
-          categoryKey: "portfolio.categories.development",
-          image: mockup6,
-      },
+    {
+      id: 5,
+      titleKey: "portfolio.items.admin",
+      categoryKey: "portfolio.categories.development",
+      image: projectAdmin,
+      link: "https://admin.ahmedlitim.com",
+    },
   ];
 
   const nextSlide = () => {
@@ -67,10 +70,13 @@ export const Portfolio = () => {
     return items;
   };
 
+  const handleProjectClick = (link: string) => {
+    window.open(link, "_blank", "noopener,noreferrer");
+  };
+
   return (
     <section id="portfolio" className="py-16 md:py-28 bg-background overflow-hidden">
       <div ref={ref} className="container-custom">
-        {/* Section Header */}
         <div className={`text-center mb-10 md:mb-16 ${isVisible ? "animate-fade-up" : "opacity-0"}`}>
           <p className="section-subheader mb-4 md:mb-6">
             ● {t("portfolio.subtitle")}
@@ -81,14 +87,12 @@ export const Portfolio = () => {
         </div>
       </div>
 
-      {/* Full-width Carousel */}
       <div className={`relative ${isVisible ? "animate-fade-up delay-200" : "opacity-0"}`}>
-        {/* Mobile: Single image with arrows */}
+        {/* Mobile */}
         <div className="block md:hidden px-4">
-          <div 
-            className="relative overflow-hidden rounded-lg"
-            onTouchStart={() => setIsHovered(true)}
-            onTouchEnd={() => setIsHovered(false)}
+          <div
+            className="relative overflow-hidden rounded-lg cursor-pointer"
+            onClick={() => handleProjectClick(portfolioItems[currentIndex].link)}
           >
             <img
               src={portfolioItems[currentIndex].image}
@@ -109,7 +113,6 @@ export const Portfolio = () => {
               </div>
             </div>
           </div>
-          {/* Mobile navigation */}
           <div className="flex justify-center gap-4 mt-4">
             <button
               onClick={prevSlide}
@@ -126,20 +129,23 @@ export const Portfolio = () => {
           </div>
         </div>
 
-        {/* Desktop: Three images with center focus */}
+        {/* Desktop */}
         <div className="hidden md:flex items-center justify-center gap-4 lg:gap-6 px-4">
           {getVisibleItems().map((item) => (
             <div
               key={`${item.id}-${item.position}`}
               className={`relative flex-shrink-0 transition-all duration-500 ${
-                item.position === 0 
-                  ? "w-[50%] lg:w-[60%] max-w-[900px] z-10" 
+                item.position === 0
+                  ? "w-[50%] lg:w-[60%] max-w-[900px] z-10"
                   : "w-[20%] lg:w-[25%] max-w-[350px] opacity-60"
               }`}
               onMouseEnter={() => item.position === 0 && setIsHovered(true)}
               onMouseLeave={() => item.position === 0 && setIsHovered(false)}
             >
-              <div className="relative overflow-hidden rounded-lg group cursor-pointer">
+              <div
+                className="relative overflow-hidden rounded-lg group cursor-pointer"
+                onClick={() => item.position === 0 && handleProjectClick(item.link)}
+              >
                 <img
                   src={item.image}
                   alt={t(item.titleKey)}
@@ -149,7 +155,6 @@ export const Portfolio = () => {
                 />
                 {item.position === 0 && (
                   <>
-                    {/* Navigation Arrows - Inside center image, visible on hover */}
                     <button
                       onClick={(e) => { e.stopPropagation(); prevSlide(); }}
                       className={`absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-accent flex items-center justify-center hover:bg-accent/90 transition-all duration-300 z-20 ${
@@ -166,7 +171,7 @@ export const Portfolio = () => {
                     >
                       <ArrowRight className="w-5 h-5 lg:w-6 lg:h-6 text-accent-foreground" />
                     </button>
-                    
+
                     <div className="absolute bottom-4 lg:bottom-6 left-4 lg:left-6">
                       <span className="inline-block bg-accent text-accent-foreground text-[10px] lg:text-xs tracking-[0.15em] uppercase px-3 lg:px-4 py-1.5 lg:py-2 rounded-full mb-2 lg:mb-3">
                         ● {t(item.categoryKey)}

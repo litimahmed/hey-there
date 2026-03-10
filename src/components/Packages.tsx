@@ -170,6 +170,17 @@ export const Packages = () => {
   const { t } = useTranslation();
   const [activeService, setActiveService] = useState<ServiceKey>("webDev");
 
+  useEffect(() => {
+    const handler = (e: Event) => {
+      const key = (e as CustomEvent).detail as ServiceKey;
+      if (serviceKeys.includes(key)) {
+        setActiveService(key);
+      }
+    };
+    window.addEventListener("select-package-tab", handler);
+    return () => window.removeEventListener("select-package-tab", handler);
+  }, []);
+
   const tabLabels: Record<ServiceKey, string> = {
     webDev: t("packages.tabs.webDev"),
     mobileDev: t("packages.tabs.mobileDev"),

@@ -1,7 +1,7 @@
 import { Check } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useTranslation } from "react-i18next";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const serviceKeys = ["webDev", "mobileDev", "desktopDev", "automation", "uiuxDesign"] as const;
 

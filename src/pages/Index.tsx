@@ -8,6 +8,7 @@ import { VideoBanner } from "@/components/VideoBanner";
 import { Testimonials } from "@/components/Testimonials";
 import { Partners } from "@/components/Partners";
 import { Packages } from "@/components/Packages";
+import { QuoteForm } from "@/components/QuoteForm";
 import { CTA } from "@/components/CTA";
 import { Footer } from "@/components/Footer";
 import { IndexSkeleton } from "@/components/IndexSkeleton";
@@ -36,6 +37,7 @@ const Index = () => {
       <VideoBanner />
       <Partners />
       <Packages />
+      <QuoteForm />
       <CTA />
       <Footer />
     </div>

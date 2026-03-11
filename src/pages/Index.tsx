@@ -37,6 +37,7 @@ const Index = () => {
       <VideoBanner />
       <Partners />
       <Packages />
+      <QuoteForm />
       <CTA />
       <Footer />
     </div>

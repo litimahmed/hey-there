@@ -394,11 +394,11 @@ export const fr = {
       multiple: "Plusieurs services",
     },
     budgetOptions: {
-      under50k: "Moins de 50 000 DZD",
-      "50k100k": "50 000 - 100 000 DZD",
-      "100k200k": "100 000 - 200 000 DZD",
-      "200k500k": "200 000 - 500 000 DZD",
-      over500k: "Plus de 500 000 DZD",
+      tier1: "30 000 – 80 000 DZD",
+      tier2: "80 000 – 200 000 DZD",
+      tier3: "200 000 – 500 000 DZD",
+      tier4: "500 000 – 1 000 000 DZD",
+      tier5: "1 000 000+ DZD",
     },
     timelineOptions: {
       asap: "Dès que possible",

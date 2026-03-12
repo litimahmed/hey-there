@@ -529,8 +529,6 @@ export const QuoteForm = () => {
     </section>
   );
 };
-  const { ref, isVisible } = useScrollAnimation();
-  const { t } = useTranslation();
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({

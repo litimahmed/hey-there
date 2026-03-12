@@ -529,8 +529,6 @@ export const QuoteForm = () => {
     </section>
   );
 };
-
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     full_name: "",
     email: "",
